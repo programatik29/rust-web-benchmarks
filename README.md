@@ -1,13 +1,13 @@
 # Web Framework Benchmarks
 
-Benchmarking web frameworks written in [rust](https://github.com/rust-lang/rust) with [rewrk](https://github.com/programatik29/rewrk) tool.
+Benchmarking web frameworks written in [rust](https://github.com/rust-lang/rust) with [rewrk](https://github.com/ChillFish8/rewrk) tool.
 
 # Bench
 
-Clone and compile [rewrk](https://github.com/programatik29/rewrk):
+Clone and compile [rewrk](https://github.com/ChillFish8/rewrk):
 
 ```
-git clone https://github.com/programatik29/rewrk
+git clone https://github.com/ChillFish8/rewrk
 cd rewrk/
 cargo build --release
 cd target/release/
