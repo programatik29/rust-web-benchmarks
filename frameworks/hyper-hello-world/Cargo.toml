@@ -1,0 +1,9 @@
+[package]
+name = "hyper-hello-world"
+version = "0.1.0"
+authors = ["Programatik <programatik29@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+tokio = { version = "1.9.0", features = ["rt", "rt-multi-thread", "macros", "net"] }
+hyper = { version = "0.14.11", features = ["runtime", "server", "http1", "http2"] }
