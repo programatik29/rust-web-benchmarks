@@ -3,8 +3,8 @@ use tokio::net::TcpListener;
 use hyper::{Body, Response};
 use hyper::server::conn::Http;
 
-use axum::route;
-use axum::handler::get;
+use axum::prelude::*;
+use axum::routing::nest;
 
 type AnyError = Box<dyn std::error::Error + Send + Sync>;
 
@@ -12,7 +12,7 @@ type AnyError = Box<dyn std::error::Error + Send + Sync>;
 async fn main() -> Result<(), AnyError> {
     let listener = TcpListener::bind("127.0.0.1:3000").await?;
 
-    let app = route("/", get(|| async { Response::new(Body::from("Hello, World!")) }));
+    let app = nest("/", get(|| async { Response::new(Body::from("Hello, World!")) }));
 
     loop {
         let (stream, _addr) = listener.accept().await?;
