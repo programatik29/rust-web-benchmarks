@@ -28,12 +28,6 @@ cargo run --release --bin=axum-hello-world
 
 # In rewrk tab
 echo "Results for axum:" && ./rewrk -t 12 -c 500 -d 10s -h http://localhost:3000/
-
-# Back to frameworks tab
-cargo run --release --bin=actix-web-hello-world
-
-# In rewrk tab
-echo "Results for actix-web:" && ./rewrk -t 12 -c 500 -d 10s -h http://localhost:3000/
 ```
 
 ## Benchmark Types
