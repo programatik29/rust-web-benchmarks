@@ -28,6 +28,12 @@ cargo run --release --bin=axum-hello-world
 
 # In rewrk tab
 echo "Results for axum:" && ./rewrk -t 12 -c 500 -d 10s -h http://localhost:3000/
+
+# Back to frameworks tab
+cargo run --release --bin=actix-web-hello-world
+
+# In rewrk tab
+echo "Results for actix-web:" && ./rewrk -t 12 -c 500 -d 10s -h http://localhost:3000/
 ```
 
 ## Benchmark Types
@@ -43,5 +49,6 @@ Available low-level frameworks:
 Available high-level frameworks:
 
 - [axum](https://github.com/tokio-rs/axum), view [code](frameworks/axum-hello-world/src/main.rs)
+- [actix-web](https://github.com/actix/actix-web), view [code](frameworks/actix-web-hello-world/src/main.rs)
 
 See [results](results/hello-world.md).
