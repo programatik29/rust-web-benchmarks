@@ -63,6 +63,34 @@ Benchmarking 500 connections @ http://localhost:3000/ for 30 seconds
     Total: 1.46 GB Transfer Rate: 49.87 MB/Sec
 ```
 
+`actix-web` uses multiple single threaded runtimes. This improves performance in simple benchmarks but disabling `tokio`'s work stealing by doing this is not recommended for real world use cases. To cheat this way, we can do the same on hyper and axum.
+
+[`hyper-hello-world-st`](/frameworks/hyper-hello-world-st/src/main.rs):
+
+```
+Benchmarking 500 connections @ http://localhost:3000/ for 30 seconds
+  Latencies:
+    Avg      Stdev    Min      Max
+    1.19ms   0.82ms   0.02ms   208.34ms
+  Requests:
+    Total: 12411602 Req/Sec: 413707.77
+  Transfer:
+    Total: 1.02 GB Transfer Rate: 34.72 MB/Sec
+```
+
+[`axum-hello-world-st`](/frameworks/axum-hello-world-st/src/main.rs):
+
+```
+Benchmarking 500 connections @ http://localhost:3000/ for 30 seconds
+  Latencies:
+    Avg      Stdev    Min      Max
+    1.33ms   1.01ms   0.03ms   204.30ms
+  Requests:
+    Total: 11134088 Req/Sec: 371118.50
+  Transfer:
+    Total: 945.03 MB Transfer Rate: 31.50 MB/Sec
+```
+
 # Observed Memory Usage
 
 `hyper`: 8 MB
