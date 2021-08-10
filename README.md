@@ -43,5 +43,6 @@ Available low-level frameworks:
 Available high-level frameworks:
 
 - [axum](https://github.com/tokio-rs/axum), view [code](frameworks/axum-hello-world/src/main.rs)
+- [actix-web](https://github.com/actix/actix-web), view [code](frameworks/actix-web-hello-world/src/main.rs)
 
 See [results](results/hello-world.md).

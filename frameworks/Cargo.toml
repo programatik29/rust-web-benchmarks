@@ -2,5 +2,6 @@
 
 members = [
 	"hyper-hello-world",
+	"actix-web-hello-world",
 	"axum-hello-world"
 ]

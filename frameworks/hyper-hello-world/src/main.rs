@@ -2,9 +2,9 @@ use std::convert::Infallible;
 
 use tokio::net::TcpListener;
 
-use hyper::{Body, Request, Response};
-use hyper::service::service_fn;
 use hyper::server::conn::Http;
+use hyper::service::service_fn;
+use hyper::{Body, Request, Response};
 
 type AnyError = Box<dyn std::error::Error + Send + Sync>;
 
@@ -16,8 +16,7 @@ async fn main() -> Result<(), AnyError> {
         let (stream, _addr) = listener.accept().await?;
 
         tokio::spawn(async move {
-            let fut = Http::new()
-                .serve_connection(stream, service_fn(serve));
+            let fut = Http::new().serve_connection(stream, service_fn(serve));
 
             match fut.await {
                 Ok(()) => (),
@@ -27,9 +26,7 @@ async fn main() -> Result<(), AnyError> {
     }
 }
 
-async fn serve(
-  _req: Request<Body>
-) -> Result<Response<Body>, Infallible> {
+async fn serve(_req: Request<Body>) -> Result<Response<Body>, Infallible> {
     let resp = Response::new(Body::from("Hello World!"));
 
     Ok(resp)
