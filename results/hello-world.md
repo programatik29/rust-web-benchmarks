@@ -63,7 +63,11 @@ Benchmarking 500 connections @ http://localhost:3000/ for 30 seconds
     Total: 1.46 GB Transfer Rate: 49.87 MB/Sec
 ```
 
-`actix-web` uses multiple single threaded runtimes. This improves performance in simple benchmarks but disabling `tokio`'s work stealing by doing this is not recommended for real world use cases. To cheat this way, we can do the same on hyper and axum.
+`actix-web` uses multiple single threaded runtimes. This improves performance in simple benchmarks.
+
+Note: Disabling `tokio`'s work stealing by doing this is not recommended while using `hyper` and `axum`.
+
+This is also possible with `hyper` and `axum`:
 
 [`hyper-hello-world-st`](/frameworks/hyper-hello-world-st/src/main.rs):
 
