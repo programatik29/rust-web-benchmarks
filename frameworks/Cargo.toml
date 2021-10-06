@@ -1,9 +1,9 @@
 [workspace]
 
 members = [
-	"hyper-hello-world",
-	"hyper-hello-world-st",
 	"actix-web-hello-world",
 	"axum-hello-world",
-	"axum-hello-world-st"
+	"axum-hello-world-st",
+	"hyper-hello-world",
+	"hyper-hello-world-st",
 ]

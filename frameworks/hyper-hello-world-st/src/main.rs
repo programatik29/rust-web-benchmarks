@@ -1,12 +1,6 @@
-use std::convert::Infallible;
-use std::sync::Arc;
-
-use tokio::runtime;
-use tokio::net::TcpListener;
-
-use hyper::server::conn::Http;
-use hyper::service::service_fn;
-use hyper::{Body, Request, Response};
+use hyper::{server::conn::Http, service::service_fn, Body, Request, Response};
+use std::{convert::Infallible, sync::Arc};
+use tokio::{net::TcpListener, runtime};
 
 type AnyError = Box<dyn std::error::Error + Send + Sync>;
 
@@ -14,7 +8,7 @@ type AnyError = Box<dyn std::error::Error + Send + Sync>;
 async fn main() -> Result<(), AnyError> {
     let listener = Arc::new(TcpListener::bind("127.0.0.1:3000").await?);
 
-    for _ in 0..num_cpus::get()-1 {
+    for _ in 0..num_cpus::get() - 1 {
         let listener = listener.clone();
 
         std::thread::spawn(move || {
@@ -37,12 +31,7 @@ async fn run_instance(listener: Arc<TcpListener>) -> Result<(), AnyError> {
         let (stream, _addr) = listener.accept().await?;
 
         tokio::spawn(async move {
-            let fut = Http::new().serve_connection(stream, service_fn(serve));
-
-            match fut.await {
-                Ok(()) => (),
-                Err(_) => (),
-            }
+            let _ = Http::new().serve_connection(stream, service_fn(serve)).await;
         });
     }
 }

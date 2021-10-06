@@ -1,34 +1,11 @@
-use tokio::net::TcpListener;
-
-use hyper::server::conn::Http;
-use hyper::{Body, Response};
-
-use axum::prelude::*;
-use axum::routing::nest;
-
-type AnyError = Box<dyn std::error::Error + Send + Sync>;
+use axum::{handler::get, Router};
 
 #[tokio::main]
-async fn main() -> Result<(), AnyError> {
-    let listener = TcpListener::bind("127.0.0.1:3000").await?;
+async fn main() {
+    let app = Router::new().nest("/", get(|| async { "Hello, world!" }));
 
-    let app = nest(
-        "/",
-        get(|| async { Response::new(Body::from("Hello, World!")) }),
-    );
-
-    loop {
-        let (stream, _addr) = listener.accept().await?;
-
-        let app = app.clone();
-
-        tokio::spawn(async move {
-            let fut = Http::new().serve_connection(stream, app);
-
-            match fut.await {
-                Ok(()) => (),
-                Err(_) => (),
-            }
-        });
-    }
+    axum::Server::bind(&"127.0.0.1:3000".parse().unwrap())
+        .serve(app.into_make_service())
+        .await
+        .unwrap();
 }

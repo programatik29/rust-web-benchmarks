@@ -1,13 +1,7 @@
-use std::sync::Arc;
-
-use tokio::runtime;
-use tokio::net::TcpListener;
-
+use axum::{handler::get, Router};
 use hyper::server::conn::Http;
-use hyper::{Body, Response};
-
-use axum::prelude::*;
-use axum::routing::nest;
+use std::sync::Arc;
+use tokio::{net::TcpListener, runtime};
 
 type AnyError = Box<dyn std::error::Error + Send + Sync>;
 
@@ -15,7 +9,7 @@ type AnyError = Box<dyn std::error::Error + Send + Sync>;
 async fn main() -> Result<(), AnyError> {
     let listener = Arc::new(TcpListener::bind("127.0.0.1:3000").await?);
 
-    for _ in 0..num_cpus::get()-1 {
+    for _ in 0..num_cpus::get() - 1 {
         let listener = listener.clone();
 
         std::thread::spawn(move || {
@@ -37,18 +31,14 @@ async fn run_instance(listener: Arc<TcpListener>) -> Result<(), AnyError> {
     loop {
         let (stream, _addr) = listener.accept().await?;
 
-        let app = nest(
-            "/",
-            get(|| async { Response::new(Body::from("Hello, World!")) }),
-        );
+        let app = Router::new().nest("/", get(handler));
 
         tokio::spawn(async move {
-            let fut = Http::new().serve_connection(stream, app);
-
-            match fut.await {
-                Ok(()) => (),
-                Err(_) => (),
-            }
+            let _ = Http::new().serve_connection(stream, app).await;
         });
     }
+}
+
+async fn handler() -> &'static str {
+    "Hello, world!"
 }
