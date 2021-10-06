@@ -1,28 +1,6 @@
-# Hardware
 
-## CPU
-
-Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz
-
-Physical cores: 6
-
-Logical cores: 12
-
-## RAM
-
-Type: DDR4
-
-Size: 2 x 8 GB
-
-Speed: 2667 MT/s
-
-# Results
-
-Benchmark script: [`run.sh`](run.sh)
-
-## hyper
-
-```
+Hyper - Hello World:
+Beginning round 1...
 Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
@@ -31,11 +9,9 @@ Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
     Total: 3301872 Req/Sec: 330169.14
   Transfer:
     Total: 277.10 MB Transfer Rate: 27.71 MB/Sec
-```
 
-## axum
-
-```
+Axum - Hello World:
+Beginning round 1...
 Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
@@ -44,11 +20,9 @@ Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
     Total: 3015907 Req/Sec: 301562.24
   Transfer:
     Total: 330.76 MB Transfer Rate: 33.07 MB/Sec
-```
 
-## actix-web
-
-```
+Actix Web - Hello World ST:
+Beginning round 1...
 Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
@@ -57,17 +31,9 @@ Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
     Total: 3931851 Req/Sec: 393163.97
   Transfer:
     Total: 487.46 MB Transfer Rate: 48.74 MB/Sec
-```
 
-`actix-web` uses multiple single threaded runtimes. This improves performance in simple benchmarks.
-
-Note: Disabling `tokio`'s work stealing by doing this is not recommended while using `hyper` and `axum`.
-
-This is also possible with `hyper` and `axum`:
-
-[`hyper-hello-world-st`](/frameworks/hyper-hello-world-st/src/main.rs):
-
-```
+Hyper - Hello World ST:
+Beginning round 1...
 Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
@@ -76,11 +42,9 @@ Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
     Total: 4009730 Req/Sec: 400950.16
   Transfer:
     Total: 336.51 MB Transfer Rate: 33.65 MB/Sec
-```
 
-[`axum-hello-world-st`](/frameworks/axum-hello-world-st/src/main.rs):
-
-```
+Axum - Hello World ST:
+Beginning round 1...
 Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
@@ -89,12 +53,4 @@ Benchmarking 500 connections @ http://localhost:3000 for 10 second(s)
     Total: 3550470 Req/Sec: 355024.47
   Transfer:
     Total: 389.39 MB Transfer Rate: 38.94 MB/Sec
-```
 
-# Observed Memory Usage
-
-`hyper`: 8 MB
-
-`axum`: 10 MB
-
-`actix-web`: 21 MB
