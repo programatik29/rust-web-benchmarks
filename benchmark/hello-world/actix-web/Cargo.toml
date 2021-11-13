@@ -1,0 +1,8 @@
+[package]
+name = "hello-world-actix-web"
+version = "0.1.0"
+authors = ["smallfish <smallfish.xy@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+actix-web = "3"

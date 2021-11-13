@@ -1,3 +1,5 @@
 [workspace]
 
-members = []
+members = [
+    "hello-world/actix-web",
+]
