@@ -1,9 +1,0 @@
-[workspace]
-
-members = [
-	"actix-web-hello-world",
-	"axum-hello-world",
-	"axum-hello-world-st",
-	"hyper-hello-world",
-	"hyper-hello-world-st",
-]
