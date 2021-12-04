@@ -3,31 +3,61 @@ Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.53ms   3.17ms   0.04ms   98.15ms  
+    1.51ms   3.18ms   0.04ms   115.76ms  
   Requests:
-    Total: 3257559 Req/Sec: 327012.50
+    Total: 3296342 Req/Sec: 331016.23
   Transfer:
-    Total: 403.86 MB Transfer Rate: 40.54 MB/Sec
+    Total: 408.67 MB Transfer Rate: 41.04 MB/Sec
 
 Axum:
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.74ms   1.68ms   0.04ms   206.74ms  
+    1.76ms   1.86ms   0.04ms   113.10ms  
   Requests:
-    Total: 2811752 Req/Sec: 282045.24
+    Total: 2780321 Req/Sec: 279203.23
   Transfer:
-    Total: 308.37 MB Transfer Rate: 30.93 MB/Sec
+    Total: 304.92 MB Transfer Rate: 30.62 MB/Sec
 
 Hyper:
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 10 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.57ms   1.52ms   0.03ms   59.69ms  
+    1.63ms   1.68ms   0.03ms   206.58ms  
   Requests:
-    Total: 3111560 Req/Sec: 311971.45
+    Total: 3003219 Req/Sec: 301233.03
   Transfer:
-    Total: 264.10 MB Transfer Rate: 26.48 MB/Sec
+    Total: 254.90 MB Transfer Rate: 25.57 MB/Sec
 
+Rocket:
+Configured for release.
+   >> address: 127.0.0.1
+   >> port: 8000
+   >> workers: 12
+   >> ident: Rocket
+   >> keep-alive: 5s
+   >> limits: bytes = 8KiB, data-form = 2MiB, file = 1MiB, form = 32KiB, json = 1MiB, msgpack = 1MiB, string = 8KiB
+   >> tls: disabled
+   >> temp dir: /tmp
+   >> log level: critical
+   >> cli colors: true
+   >> shutdown: ctrlc = true, force = true, signals = [SIGTERM], grace = 2s, mercy = 3s
+Routes:
+   >> (hello) GET /
+Fairings:
+   >> Shield (liftoff, response, singleton)
+Rocket has launched from http://127.0.0.1:8000
+Beginning round 1...
+Benchmarking 500 connections @ http://127.0.0.1:8000 for 10 second(s)
+   >> Failed to write response: client disconnected before the response was started.
+  Latencies:
+    Avg      Stdev    Min      Max      
+    2.79ms   2.23ms   0.05ms   43.82ms  
+  Requests:
+    Total: 1790261 Req/Sec: 179421.99
+  Transfer:
+    Total: 423.42 MB Transfer Rate: 42.44 MB/Sec
+
+Warning: Received SIGTERM. Requesting shutdown.
