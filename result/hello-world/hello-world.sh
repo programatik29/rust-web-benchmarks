@@ -6,6 +6,7 @@ cd ../../benchmark
 cargo build --release --bin hello-world-actix-web
 cargo build --release --bin hello-world-axum
 cargo build --release --bin hello-world-hyper
+cargo build --release --bin hello-world-poem
 cargo +nightly build --release --bin hello-world-rocket
 cargo build --release --bin hello-world-tide
 cargo build --release --bin hello-world-warp
@@ -27,6 +28,13 @@ kill $!
 # hyper
 echo "Hyper:"
 cargo run -q --release --bin hello-world-hyper &
+sleep 1
+eval $bench_cmd
+kill $!
+
+# poem
+echo "Poem:"
+cargo run -q --release --bin hello-world-poem &
 sleep 1
 eval $bench_cmd
 kill $!
