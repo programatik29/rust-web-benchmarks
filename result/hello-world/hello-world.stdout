@@ -1,40 +1,40 @@
 Actix Web:
 Beginning round 1...
-Benchmarking 500 connections @ http://127.0.0.1:3000 for 10 second(s)
+Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.51ms   3.18ms   0.04ms   115.76ms  
+    1.56ms   3.17ms   0.04ms   99.92ms  
   Requests:
-    Total: 3296342 Req/Sec: 331016.23
+    Total: 9605731 Req/Sec: 320654.89
   Transfer:
-    Total: 408.67 MB Transfer Rate: 41.04 MB/Sec
+    Total: 1.16 GB Transfer Rate: 39.75 MB/Sec
 
 Axum:
 Beginning round 1...
-Benchmarking 500 connections @ http://127.0.0.1:3000 for 10 second(s)
+Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.76ms   1.86ms   0.04ms   113.10ms  
+    1.83ms   1.77ms   0.03ms   211.36ms  
   Requests:
-    Total: 2780321 Req/Sec: 279203.23
+    Total: 8095701 Req/Sec: 270146.24
   Transfer:
-    Total: 304.92 MB Transfer Rate: 30.62 MB/Sec
+    Total: 887.88 MB Transfer Rate: 29.63 MB/Sec
 
 Hyper:
 Beginning round 1...
-Benchmarking 500 connections @ http://127.0.0.1:3000 for 10 second(s)
+Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.63ms   1.68ms   0.03ms   206.58ms  
+    1.69ms   1.63ms   0.03ms   203.87ms  
   Requests:
-    Total: 3003219 Req/Sec: 301233.03
+    Total: 8796473 Req/Sec: 293359.90
   Transfer:
-    Total: 254.90 MB Transfer Rate: 25.57 MB/Sec
+    Total: 746.62 MB Transfer Rate: 24.90 MB/Sec
 
 Rocket:
 Configured for release.
    >> address: 127.0.0.1
-   >> port: 8000
+   >> port: 3000
    >> workers: 12
    >> ident: Rocket
    >> keep-alive: 5s
@@ -44,20 +44,44 @@ Configured for release.
    >> log level: critical
    >> cli colors: true
    >> shutdown: ctrlc = true, force = true, signals = [SIGTERM], grace = 2s, mercy = 3s
+Warning: found value for deprecated config key `env`
+   >> key has been by replaced by `profile`
 Routes:
    >> (hello) GET /
 Fairings:
    >> Shield (liftoff, response, singleton)
-Rocket has launched from http://127.0.0.1:8000
+Rocket has launched from http://127.0.0.1:3000
 Beginning round 1...
-Benchmarking 500 connections @ http://127.0.0.1:8000 for 10 second(s)
+Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
    >> Failed to write response: client disconnected before the response was started.
   Latencies:
     Avg      Stdev    Min      Max      
-    2.79ms   2.23ms   0.05ms   43.82ms  
+    2.91ms   2.30ms   0.05ms   71.96ms  
   Requests:
-    Total: 1790261 Req/Sec: 179421.99
+    Total: 5144448 Req/Sec: 171646.69
   Transfer:
-    Total: 423.42 MB Transfer Rate: 42.44 MB/Sec
+    Total: 1.19 GB Transfer Rate: 40.60 MB/Sec
 
+Tide:
 Warning: Received SIGTERM. Requesting shutdown.
+Beginning round 1...
+Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
+  Latencies:
+    Avg      Stdev    Min      Max      
+    4.15ms   11.74ms  0.04ms   64.92ms  
+  Requests:
+    Total: 3573597 Req/Sec: 119222.47
+  Transfer:
+    Total: 439.69 MB Transfer Rate: 14.67 MB/Sec
+
+Warp:
+Beginning round 1...
+Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
+  Latencies:
+    Avg      Stdev    Min      Max      
+    1.75ms   1.67ms   0.03ms   86.02ms  
+  Requests:
+    Total: 8485373 Req/Sec: 283105.89
+  Transfer:
+    Total: 1.03 GB Transfer Rate: 35.10 MB/Sec
+
