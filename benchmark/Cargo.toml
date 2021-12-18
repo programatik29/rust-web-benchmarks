@@ -5,4 +5,6 @@ members = [
     "hello-world/axum",
     "hello-world/hyper",
     "hello-world/rocket",
+    "hello-world/tide",
+    "hello-world/warp",
 ]
