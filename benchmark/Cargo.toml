@@ -7,4 +7,5 @@ members = [
     "hello-world/rocket",
     "hello-world/tide",
     "hello-world/warp",
+    "hello-world/poem",
 ]
