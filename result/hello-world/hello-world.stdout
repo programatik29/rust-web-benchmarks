@@ -3,33 +3,44 @@ Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.56ms   3.17ms   0.04ms   99.92ms  
+    1.49ms   3.13ms   0.04ms   61.62ms  
   Requests:
-    Total: 9605731 Req/Sec: 320654.89
+    Total: 10046862 Req/Sec: 335152.51
   Transfer:
-    Total: 1.16 GB Transfer Rate: 39.75 MB/Sec
+    Total: 1.22 GB Transfer Rate: 41.55 MB/Sec
 
 Axum:
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.83ms   1.77ms   0.03ms   211.36ms  
+    1.79ms   1.69ms   0.03ms   202.05ms  
   Requests:
-    Total: 8095701 Req/Sec: 270146.24
+    Total: 8295218 Req/Sec: 276734.54
   Transfer:
-    Total: 887.88 MB Transfer Rate: 29.63 MB/Sec
+    Total: 909.76 MB Transfer Rate: 30.35 MB/Sec
 
 Hyper:
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.69ms   1.63ms   0.03ms   203.87ms  
+    1.63ms   1.56ms   0.03ms   205.96ms  
   Requests:
-    Total: 8796473 Req/Sec: 293359.90
+    Total: 9156460 Req/Sec: 305494.56
   Transfer:
-    Total: 746.62 MB Transfer Rate: 24.90 MB/Sec
+    Total: 777.17 MB Transfer Rate: 25.93 MB/Sec
+
+Poem:
+Beginning round 1...
+Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
+  Latencies:
+    Avg      Stdev    Min      Max      
+    1.82ms   1.77ms   0.04ms   72.70ms  
+  Requests:
+    Total: 8242669 Req/Sec: 275005.05
+  Transfer:
+    Total: 903.99 MB Transfer Rate: 30.16 MB/Sec
 
 Rocket:
 Configured for release.
@@ -53,14 +64,13 @@ Fairings:
 Rocket has launched from http://127.0.0.1:3000
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
-   >> Failed to write response: client disconnected before the response was started.
   Latencies:
     Avg      Stdev    Min      Max      
-    2.91ms   2.30ms   0.05ms   71.96ms  
+    2.83ms   2.29ms   0.05ms   75.97ms  
   Requests:
-    Total: 5144448 Req/Sec: 171646.69
+    Total: 5301129 Req/Sec: 176856.69
   Transfer:
-    Total: 1.19 GB Transfer Rate: 40.60 MB/Sec
+    Total: 1.22 GB Transfer Rate: 41.83 MB/Sec
 
 Tide:
 Warning: Received SIGTERM. Requesting shutdown.
@@ -68,20 +78,20 @@ Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    4.15ms   11.74ms  0.04ms   64.92ms  
+    4.03ms   11.60ms  0.05ms   86.87ms  
   Requests:
-    Total: 3573597 Req/Sec: 119222.47
+    Total: 3683696 Req/Sec: 122913.64
   Transfer:
-    Total: 439.69 MB Transfer Rate: 14.67 MB/Sec
+    Total: 453.23 MB Transfer Rate: 15.12 MB/Sec
 
 Warp:
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.75ms   1.67ms   0.03ms   86.02ms  
+    1.67ms   1.62ms   0.03ms   72.00ms  
   Requests:
-    Total: 8485373 Req/Sec: 283105.89
+    Total: 8863526 Req/Sec: 295927.43
   Transfer:
-    Total: 1.03 GB Transfer Rate: 35.10 MB/Sec
+    Total: 1.07 GB Transfer Rate: 36.69 MB/Sec
 
