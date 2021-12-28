@@ -4,6 +4,7 @@ trap "kill 0" SIGINT
 export bench_cmd="rewrk -t 12 -c 500 -d 30s -h http://127.0.0.1:3000"
 cd ../../benchmark
 cargo build --release --bin hello-world-actix-web
+cargo build --release --bin hello-world-astra
 cargo build --release --bin hello-world-axum
 cargo build --release --bin hello-world-hyper
 cargo build --release --bin hello-world-poem
@@ -15,6 +16,13 @@ cargo build --release --bin hello-world-warp
 echo "Actix Web:"
 cargo run -q --release --bin hello-world-actix-web &
 sleep 1
+eval $bench_cmd
+kill $!
+
+# astra
+echo "Astra:"
+cargo run -q --release --bin hello-world-astra &
+sleep 2
 eval $bench_cmd
 kill $!
 
