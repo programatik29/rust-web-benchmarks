@@ -4,7 +4,7 @@ trap "kill 0" SIGINT
 export bench_cmd="rewrk --json -t 12 -c 500 -d 30s -h http://127.0.0.1:3000
 | jq -r 'def roundit: .*100.0|round/100.0;
     [.latency_avg,.latency_max,.latency_min,.latency_std_deviation,.requests_avg,.requests_total,.transfer_rate,.transfer_total|roundit] | @csv'"
-cd ../../benchmark
+cd ../../../benchmark
 cargo build --release --bin hello-world-actix-web
 cargo build --release --bin hello-world-astra
 cargo build --release --bin hello-world-axum
@@ -62,6 +62,6 @@ cargo run -q --release --bin hello-world-warp &
 sleep 1
 eval $bench_cmd | echo "Warp,$(cat -)"
 kill $!
-) | tee ../result/csv/csv.stdout
-cd ../result/csv/
-csvlook csv.stdout | echo "\`\`\`\n$(cat -)\n\`\`\`" | tee csv.md
+) | tee ../result/hello-world/csv/hello-world-csv.stdout
+cd ../result/hello-world/csv
+csvlook hello-world-csv.stdout | echo "\`\`\`\n$(cat -)\n\`\`\`" | tee hello-world-csv.md
