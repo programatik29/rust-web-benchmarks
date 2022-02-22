@@ -9,6 +9,7 @@ cargo build --release --bin hello-world-axum
 cargo build --release --bin hello-world-hyper
 cargo build --release --bin hello-world-poem
 cargo +nightly build --release --bin hello-world-rocket
+cargo build --release --bin hello-world-thruster
 cargo build --release --bin hello-world-tide
 cargo build --release --bin hello-world-warp
 (
@@ -50,6 +51,13 @@ kill $!
 # rocket
 echo "Rocket:"
 ROCKET_ENV=prod ROCKET_PORT=3000 cargo +nightly run -q --release --bin hello-world-rocket &
+sleep 1
+eval $bench_cmd
+kill $!
+
+# thruster
+echo "Thruster:"
+cargo run -q --release --bin hello-world-thruster &
 sleep 1
 eval $bench_cmd
 kill $!
