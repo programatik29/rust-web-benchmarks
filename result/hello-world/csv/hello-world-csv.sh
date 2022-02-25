@@ -1,5 +1,6 @@
 # note: "rewrk" needs to be in $PATH
 # used rewrk: https://github.com/programatik29/rewrk/tree/single-thread
+# note: this csv version of the benchmarks also need "pq" and "csvkit" to be installed. They are available on mac homebrew.
 trap "kill 0" SIGINT
 export bench_cmd="rewrk --json -t 12 -c 500 -d 30s -h http://127.0.0.1:3000
 | jq -r 'def roundit: .*100.0|round/100.0;
