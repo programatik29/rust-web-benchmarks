@@ -7,6 +7,7 @@ cargo build --release --bin hello-world-actix-web
 cargo build --release --bin hello-world-astra
 cargo build --release --bin hello-world-axum
 cargo build --release --bin hello-world-hyper
+cargo build --release --bin hello-world-ntex
 cargo build --release --bin hello-world-poem
 cargo +nightly build --release --bin hello-world-rocket
 cargo build --release --bin hello-world-thruster
@@ -37,6 +38,13 @@ kill $!
 # hyper
 echo "Hyper:"
 cargo run -q --release --bin hello-world-hyper &
+sleep 1
+eval $bench_cmd
+kill $!
+
+# ntex
+echo "Ntex:"
+cargo run -q --release --bin hello-world-ntex &
 sleep 1
 eval $bench_cmd
 kill $!
