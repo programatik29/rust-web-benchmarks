@@ -27,9 +27,7 @@ Respond "Hello, World!" to every request on "/" endpoint.
 - [tide](benchmark/hello-world/tide/src/main.rs)
 - [warp](benchmark/hello-world/warp/src/main.rs)
 
-### Results
- - [Rewrk output](result/hello-world/hello-world.md).
- - [Table formatted](result/hello-world/csv/hello-world-csv.md).
+See [results](result/hello-world/hello-world.md).
 
 [rewrk]: https://github.com/ChillFish8/rewrk
 [rust]: https://github.com/rust-lang/rust
