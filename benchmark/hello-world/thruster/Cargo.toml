@@ -1,0 +1,7 @@
+[package]
+name = "hello-world-thruster"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+thruster = "1.1.14"
