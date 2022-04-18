@@ -8,9 +8,7 @@ async fn hello(mut ctx: Context, _next: MiddlewareNext<Context>) -> MiddlewareRe
 }
 
 fn main() {
-    let mut app = App::<Request, Context, ()>::new_basic();
-    app.get("/", m![hello]);
+    let app = App::<Request, Context, ()>::new_basic().get("/", m![hello]);
 
     Server::new(app).start("127.0.0.1", 3000);
-
 }
