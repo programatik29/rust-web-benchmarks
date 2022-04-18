@@ -5,6 +5,7 @@ members = [
     "hello-world/astra",
     "hello-world/axum",
     "hello-world/hyper",
+    "hello-world/ntex",
     "hello-world/rocket",
     "hello-world/thruster",
     "hello-world/tide",

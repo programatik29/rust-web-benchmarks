@@ -1,8 +1,8 @@
 [package]
-name = "hello-world-actix-web"
+name = "hello-world-ntex"
 version = "0.1.0"
 authors = ["smallfish <smallfish.xy@gmail.com>"]
 edition = "2021"
 
 [dependencies]
-actix-web = "4"
+ntex = { version = "0.5", features = ["tokio"] }
