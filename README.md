@@ -23,6 +23,7 @@ Respond "Hello, World!" to every request on "/" endpoint.
 - [ntex](benchmark/hello-world/ntex/src/main.rs)
 - [poem](benchmark/hello-world/poem/src/main.rs)
 - [rocket](benchmark/hello-world/rocket/src/main.rs)
+- [salvo](benchmark/hello-world/salvo/src/main.rs)
 - [thruster](benchmark/hello-world/thruster/src/main.rs)
 - [tide](benchmark/hello-world/tide/src/main.rs)
 - [warp](benchmark/hello-world/warp/src/main.rs)
