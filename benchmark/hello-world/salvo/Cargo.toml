@@ -6,5 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-salvo = "0.24"
+salvo = "0.25"
 tokio = { version = "1.12", features = ["rt-multi-thread", "macros"] }
