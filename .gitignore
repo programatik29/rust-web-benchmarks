@@ -1,5 +1,2 @@
 /benchmark/target
-/benchmark/*/*/target
-/benchmark/*/*/Cargo.lock
-/benchmark/Cargo.lock
 Cargo.lock
