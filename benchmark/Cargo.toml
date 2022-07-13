@@ -7,6 +7,7 @@ members = [
     "hello-world/hyper",
     "hello-world/ntex",
     "hello-world/rocket",
+    "hello-world/salvo",
     "hello-world/thruster",
     "hello-world/tide",
     "hello-world/warp",
