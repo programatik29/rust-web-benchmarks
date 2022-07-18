@@ -11,5 +11,6 @@ members = [
     "hello-world/thruster",
     "hello-world/tide",
     "hello-world/warp",
-    "hello-world/poem"
+    "hello-world/poem",
+    "hello-world/viz"
 ]

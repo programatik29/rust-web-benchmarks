@@ -85,6 +85,13 @@ sleep 1
 eval $bench_cmd
 kill $!
 
+# viz
+echo "Viz:"
+cargo run -q --release --bin hello-world-viz &
+sleep 1
+eval $bench_cmd
+kill $!
+
 # warp
 echo "Warp:"
 cargo run -q --release --bin hello-world-warp &
