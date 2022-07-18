@@ -13,7 +13,7 @@ cargo +nightly build --release --bin hello-world-rocket
 cargo build --release --bin hello-world-salvo
 cargo build --release --bin hello-world-thruster
 cargo build --release --bin hello-world-tide
-#cargo build --release --bin hello-world-viz
+cargo build --release --bin hello-world-viz
 cargo build --release --bin hello-world-warp
 (
 # actix-web
@@ -86,12 +86,12 @@ sleep 1
 eval $bench_cmd
 kill $!
 
-## viz
-#echo "Viz:"
-#cargo run -q --release --bin hello-world-viz &
-#sleep 1
-#eval $bench_cmd
-#kill $!
+# viz
+echo "Viz:"
+cargo run -q --release --bin hello-world-viz &
+sleep 1
+eval $bench_cmd
+kill $!
 
 # warp
 echo "Warp:"
