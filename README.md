@@ -26,6 +26,7 @@ Respond "Hello, World!" to every request on "/" endpoint.
 - [salvo](benchmark/hello-world/salvo/src/main.rs)
 - [thruster](benchmark/hello-world/thruster/src/main.rs)
 - [tide](benchmark/hello-world/tide/src/main.rs)
+- [viz](benchmark/hello-world/viz/src/main.rs)
 - [warp](benchmark/hello-world/warp/src/main.rs)
 
 See [results](result/hello-world/hello-world.md).
