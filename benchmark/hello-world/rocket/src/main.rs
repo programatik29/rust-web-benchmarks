@@ -1,4 +1,4 @@
-#[macro_use] extern crate rocket;
+use rocket::{get, launch, routes};
 
 #[get("/")]
 fn hello() -> &'static str {
