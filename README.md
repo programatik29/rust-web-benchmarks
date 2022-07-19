@@ -29,7 +29,7 @@ Respond "Hello, World!" to every request on "/" endpoint.
 - [viz](benchmark/hello-world/viz/src/main.rs)
 - [warp](benchmark/hello-world/warp/src/main.rs)
 
-See [results](result/hello-world/hello-world.md).
+See [results](result/hello-world.md).
 
 [rewrk]: https://github.com/ChillFish8/rewrk
 [rust]: https://github.com/rust-lang/rust
