@@ -39,6 +39,10 @@ struct Args {
     /// Url for each benchmark.
     #[clap(short, default_value = "http://127.0.0.1:3000")]
     url: String,
+
+    /// Cooling down for each benchmark.
+    #[clap(long, default_value = "5")]
+    cd: u64,
 }
 
 #[derive(Debug, Serialize, Deserialize)]
@@ -98,6 +102,8 @@ fn main() {
     let cpu_count = sys.cpus().len().to_string();
     let conn_count = args.connections.to_string();
     let duration = format!("{}s", args.duration);
+    let cd = args.cd;
+    let members_len = members.len();
 
     let rewrk_args = [
         "-t",
@@ -128,7 +134,7 @@ fn main() {
 
     let mut output_map = HashMap::new();
 
-    for member in &members {
+    for (index, member) in members.iter().enumerate() {
         if exclude.contains(member) {
             log::warn!("Skipping {:?} because build was failed.", member);
         } else {
@@ -190,6 +196,11 @@ fn main() {
                 output_md.add_item(format!("## {}", framework_name));
                 output_md.add_item(format!("Maximum Memory Usage: {:.1} MB", max_memory));
                 output_md.add_item(format!("```\n{}\n```", stdout.trim()));
+            }
+
+            // lets CPU cooling down, ignore last member.
+            if index != members_len - 1 {
+                thread::sleep(Duration::from_secs(cd));
             }
         }
     }
