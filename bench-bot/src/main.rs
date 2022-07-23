@@ -14,8 +14,10 @@ use std::{
     time::Duration,
 };
 use sysinfo::{CpuExt, PidExt, ProcessExt, System, SystemExt};
+use self::report::{Metrics, Report};
 
 mod markdown;
+mod report;
 
 #[derive(Debug, Parser)]
 #[clap(version)]
@@ -127,6 +129,7 @@ fn main() {
     base_md.add_item(format!("```\n{}\n```", bench_command));
 
     let mut output_map = HashMap::new();
+    let mut reports = Vec::with_capacity(members.len());
 
     for member in &members {
         if exclude.contains(member) {
@@ -190,11 +193,24 @@ fn main() {
                 output_md.add_item(format!("## {}", framework_name));
                 output_md.add_item(format!("Maximum Memory Usage: {:.1} MB", max_memory));
                 output_md.add_item(format!("```\n{}\n```", stdout.trim()));
+
+                if let Ok(metrics) = stdout.parse::<Metrics>() {
+                    reports.push(Report::new(
+                        framework_name,
+                        max_memory,
+                        metrics,
+                    ));
+                } else {
+                    log::warn!("Could not parse benchmark result: {}", stdout);
+                }
             }
         }
     }
 
-    for (bench_type, output_md) in output_map {
+    for (bench_type, mut output_md) in output_map {
+        output_md.add_item("## Comparisons");
+        output_md.add_item(Report::generate_from(&reports));
+
         let output_path = args.output_dir.join(format!("{}.md", bench_type));
 
         log::info!("Writing output to {:?}.", output_path);
