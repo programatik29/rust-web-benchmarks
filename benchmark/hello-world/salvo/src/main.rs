@@ -1,6 +1,6 @@
 use salvo::prelude::*;
 
-#[fn_handler]
+#[handler]
 fn hello() -> &'static str {
     "Hello, World!"
 }
