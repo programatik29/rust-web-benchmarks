@@ -14,52 +14,69 @@ Command:
 rewrk -t 24 -c 500 -d 30s -h http://127.0.0.1:3000
 ```
 
+## Comparisons
+
+| Framework Name | Latency.Avg | Latency.Stdev | Latency.Min | Latency.Max | Request.Total | Request.Req/Sec | Transfer.Total | Transfer.Rate | Max. Memory Usage |
+|---|---|---|---|---|---|---|---|---|---|
+|actix-web|0.54ms|0.92ms|0.03ms|152.70ms|27996675|933296.99|3.39GB|115.71MB/Sec|13.6MB|
+|astra|0.84ms|11.52ms|0.02ms|28989.58ms|12659565|422018.87|1.26GB|43.06MB/Sec|5.1MB|
+|axum|0.65ms|0.36ms|0.03ms|16.41ms|23053173|768607.04|2.79GB|95.29MB/Sec|12.1MB|
+|hyper|0.65ms|0.30ms|0.03ms|13.47ms|23060832|768858.98|1.91GB|65.26MB/Sec|12.4MB|
+|ntex|0.59ms|1.39ms|0.02ms|40.02ms|25299483|843765.89|3.04GB|103.80MB/Sec|4.5MB|
+|poem|0.72ms|0.36ms|0.03ms|22.35ms|20816530|694034.26|2.52GB|86.04MB/Sec|15.3MB|
+|rocket|1.26ms|0.62ms|0.04ms|15.23ms|11892802|396500.98|2.75GB|93.78MB/Sec|19.1MB|
+|salvo|0.66ms|0.36ms|0.03ms|20.89ms|22811135|760549.93|2.76GB|94.29MB/Sec|14.8MB|
+|thruster|0.63ms|3.34ms|0.02ms|423.89ms|23816252|794047.77|2.26GB|77.24MB/Sec|9.8MB|
+|tide|45.54ms|2.66ms|0.05ms|50.97ms|329021|10968.38|40.53MB|1.35MB/Sec|24.0MB|
+|viz|0.68ms|0.34ms|0.02ms|21.03ms|22162150|738912.85|2.68GB|91.61MB/Sec|11.4MB|
+|warp|0.68ms|0.32ms|0.03ms|14.57ms|21947942|731761.92|2.66GB|90.72MB/Sec|12.8MB|
+
 ## actix-web
 
-Maximum Memory Usage: 13.7 MB
+Maximum Memory Usage: 13.6 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.50ms   1.22ms   0.02ms   41.93ms  
+    0.54ms   0.92ms   0.03ms   152.70ms  
   Requests:
-    Total: 30178057 Req/Sec: 1006342.33
+    Total: 27996675 Req/Sec: 933296.99
   Transfer:
-    Total: 3.65 GB Transfer Rate: 124.76 MB/Sec
+    Total: 3.39 GB Transfer Rate: 115.71 MB/Sec
 ```
 
 ## astra
 
-Maximum Memory Usage: 5.2 MB
+Maximum Memory Usage: 5.1 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.85ms   16.30ms  0.03ms   28972.10ms  
+    0.84ms   11.52ms  0.02ms   28989.58ms  
   Requests:
-    Total: 12639751 Req/Sec: 421353.23
+    Total: 12659565 Req/Sec: 422018.87
   Transfer:
-    Total: 1.26 GB Transfer Rate: 43.00 MB/Sec
+    Total: 1.26 GB Transfer Rate: 43.06 MB/Sec
 ```
 
 ## axum
 
-Maximum Memory Usage: 12.4 MB
+Maximum Memory Usage: 12.1 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.72ms   0.36ms   0.03ms   17.55ms  
+    0.65ms   0.36ms   0.03ms   16.41ms  
   Requests:
-    Total: 20765149 Req/Sec: 692354.35
+    Total: 23053173 Req/Sec: 768607.04
   Transfer:
-    Total: 2.51 GB Transfer Rate: 85.84 MB/Sec
+    Total: 2.79 GB Transfer Rate: 95.29 MB/Sec
 ```
 
 ## hyper
@@ -71,11 +88,11 @@ Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.63ms   0.30ms   0.03ms   12.62ms  
+    0.65ms   0.30ms   0.03ms   13.47ms  
   Requests:
-    Total: 23911376 Req/Sec: 797221.51
+    Total: 23060832 Req/Sec: 768858.98
   Transfer:
-    Total: 1.98 GB Transfer Rate: 67.67 MB/Sec
+    Total: 1.91 GB Transfer Rate: 65.26 MB/Sec
 ```
 
 ## ntex
@@ -87,121 +104,121 @@ Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.74ms   1.03ms   0.03ms   220.10ms  
+    0.59ms   1.39ms   0.02ms   40.02ms  
   Requests:
-    Total: 20265443 Req/Sec: 675902.34
+    Total: 25299483 Req/Sec: 843765.89
   Transfer:
-    Total: 2.43 GB Transfer Rate: 83.15 MB/Sec
+    Total: 3.04 GB Transfer Rate: 103.80 MB/Sec
 ```
 
 ## poem
 
-Maximum Memory Usage: 15.6 MB
+Maximum Memory Usage: 15.3 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.70ms   0.36ms   0.03ms   16.69ms  
+    0.72ms   0.36ms   0.03ms   22.35ms  
   Requests:
-    Total: 21351899 Req/Sec: 711913.18
+    Total: 20816530 Req/Sec: 694034.26
   Transfer:
-    Total: 2.59 GB Transfer Rate: 88.26 MB/Sec
+    Total: 2.52 GB Transfer Rate: 86.04 MB/Sec
 ```
 
 ## rocket
 
-Maximum Memory Usage: 19.6 MB
+Maximum Memory Usage: 19.1 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.22ms   0.60ms   0.04ms   13.74ms  
+    1.26ms   0.62ms   0.04ms   15.23ms  
   Requests:
-    Total: 12278577 Req/Sec: 409423.02
+    Total: 11892802 Req/Sec: 396500.98
   Transfer:
-    Total: 2.84 GB Transfer Rate: 96.83 MB/Sec
+    Total: 2.75 GB Transfer Rate: 93.78 MB/Sec
 ```
 
 ## salvo
 
-Maximum Memory Usage: 13.9 MB
+Maximum Memory Usage: 14.8 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.69ms   0.36ms   0.02ms   13.39ms  
+    0.66ms   0.36ms   0.03ms   20.89ms  
   Requests:
-    Total: 21592933 Req/Sec: 719924.63
+    Total: 22811135 Req/Sec: 760549.93
   Transfer:
-    Total: 2.61 GB Transfer Rate: 89.25 MB/Sec
+    Total: 2.76 GB Transfer Rate: 94.29 MB/Sec
 ```
 
 ## thruster
 
-Maximum Memory Usage: 10.1 MB
+Maximum Memory Usage: 9.8 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.63ms   3.40ms   0.02ms   340.92ms  
+    0.63ms   3.34ms   0.02ms   423.89ms  
   Requests:
-    Total: 23815216 Req/Sec: 794051.90
+    Total: 23816252 Req/Sec: 794047.77
   Transfer:
     Total: 2.26 GB Transfer Rate: 77.24 MB/Sec
 ```
 
 ## tide
 
-Maximum Memory Usage: 24.2 MB
+Maximum Memory Usage: 24.0 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    1.45ms   7.25ms   0.02ms   48.94ms  
+    45.54ms  2.66ms   0.05ms   50.97ms  
   Requests:
-    Total: 10316125 Req/Sec: 343973.05
+    Total: 329021  Req/Sec: 10968.38
   Transfer:
-    Total: 1.24 GB Transfer Rate: 42.32 MB/Sec
+    Total: 40.53 MB Transfer Rate: 1.35 MB/Sec
 ```
 
 ## viz
 
-Maximum Memory Usage: 11.3 MB
+Maximum Memory Usage: 11.4 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.71ms   0.34ms   0.03ms   20.09ms  
+    0.68ms   0.34ms   0.02ms   21.03ms  
   Requests:
-    Total: 21182913 Req/Sec: 706258.39
+    Total: 22162150 Req/Sec: 738912.85
   Transfer:
-    Total: 2.56 GB Transfer Rate: 87.56 MB/Sec
+    Total: 2.68 GB Transfer Rate: 91.61 MB/Sec
 ```
 
 ## warp
 
-Maximum Memory Usage: 12.9 MB
+Maximum Memory Usage: 12.8 MB
 
 ```
 Beginning round 1...
 Benchmarking 500 connections @ http://127.0.0.1:3000 for 30 second(s)
   Latencies:
     Avg      Stdev    Min      Max      
-    0.62ms   0.33ms   0.02ms   13.39ms  
+    0.68ms   0.32ms   0.03ms   14.57ms  
   Requests:
-    Total: 24172598 Req/Sec: 805911.16
+    Total: 21947942 Req/Sec: 731761.92
   Transfer:
-    Total: 2.93 GB Transfer Rate: 99.91 MB/Sec
+    Total: 2.66 GB Transfer Rate: 90.72 MB/Sec
 ```
