@@ -151,7 +151,7 @@ fn main() {
 
             let framework_name = member.file_name().unwrap().to_str().unwrap();
 
-            let output_md = output_map.entry(bench_type).or_insert(base_md.clone());
+            let result_md = output_map.entry(bench_type).or_insert(Markdown::new());
 
             log::info!("Benchmarking {:?}", member);
 
@@ -196,9 +196,9 @@ fn main() {
             } else {
                 let stdout = String::from_utf8_lossy(&output.stdout);
 
-                output_md.add_item(format!("## {}", framework_name));
-                output_md.add_item(format!("Maximum Memory Usage: {:.1} MB", max_memory));
-                output_md.add_item(format!("```\n{}\n```", stdout.trim()));
+                result_md.add_item(format!("## {}", framework_name));
+                result_md.add_item(format!("Maximum Memory Usage: {:.1} MB", max_memory));
+                result_md.add_item(format!("```\n{}\n```", stdout.trim()));
 
                 if let Ok(metrics) = stdout.parse::<Metrics>() {
                     reports.push(Report::new(
@@ -218,9 +218,13 @@ fn main() {
         }
     }
 
-    for (bench_type, mut output_md) in output_map {
+    for (bench_type, result_md) in output_map {
+        let mut output_md = base_md.clone();
+
         output_md.add_item("## Comparisons");
         output_md.add_item(Report::generate_from(&reports));
+
+        output_md.add_item(result_md.finish());
 
         let output_path = args.output_dir.join(format!("{}.md", bench_type));
 
