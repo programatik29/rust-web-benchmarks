@@ -19,6 +19,7 @@ Respond "Hello, World!" to every request on "/" endpoint.
 - [actix-web](benchmark/hello-world/actix-web/src/main.rs)
 - [astra](benchmark/hello-world/astra/src/main.rs)
 - [axum](benchmark/hello-world/axum/src/main.rs)
+- [graphul](benchmark/hello-world/graphul/src/main.rs)
 - [hyper](benchmark/hello-world/hyper/src/main.rs)
 - [ntex](benchmark/hello-world/ntex/src/main.rs)
 - [poem](benchmark/hello-world/poem/src/main.rs)

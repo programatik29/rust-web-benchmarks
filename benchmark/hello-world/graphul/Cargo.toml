@@ -1,0 +1,8 @@
+[package]
+name = "hello-world-graphul"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+graphul = "0.4"
+tokio = { version = "1", features = ["full"] }
