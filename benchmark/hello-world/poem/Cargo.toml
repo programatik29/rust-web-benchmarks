@@ -3,8 +3,6 @@ name = "hello-world-poem"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-poem = "1.2"
-tokio = { version = "1.12", features = ["rt-multi-thread", "macros"] }
+poem = "1.3.59"
+tokio = { version = "1.35.1", features = ["rt-multi-thread", "macros"] }
