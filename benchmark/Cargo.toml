@@ -1,5 +1,4 @@
 [workspace]
 
-members = [
-    "hello-world/*"
-]
+members = ["hello-world/*"]
+resolver = "2"

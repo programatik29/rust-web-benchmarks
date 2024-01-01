@@ -3,8 +3,6 @@ name = "hello-world-salvo"
 version = "0.1.0"
 edition = "2021"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
-salvo = "0.31"
-tokio = { version = "1.12", features = ["rt-multi-thread", "macros"] }
+salvo = "0.63.1"
+tokio = { version = "1.35.1", features = ["rt-multi-thread", "macros"] }

@@ -1,5 +1,7 @@
-use thruster::{App, Request, middleware_fn, MiddlewareNext, MiddlewareResult, m, Server, ThrusterServer};
 use thruster::BasicContext as Context;
+use thruster::{
+    m, middleware_fn, App, MiddlewareNext, MiddlewareResult, Request, Server, ThrusterServer,
+};
 
 #[middleware_fn]
 async fn hello(mut ctx: Context, _next: MiddlewareNext<Context>) -> MiddlewareResult<Context> {

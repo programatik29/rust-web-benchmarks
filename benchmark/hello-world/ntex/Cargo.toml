@@ -5,4 +5,4 @@ authors = ["smallfish <smallfish.xy@gmail.com>"]
 edition = "2021"
 
 [dependencies]
-ntex = { version = "0.5", features = ["tokio"] }
+ntex = { version = "0.7.16", features = ["tokio"] }

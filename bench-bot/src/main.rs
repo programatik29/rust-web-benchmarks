@@ -1,4 +1,5 @@
 use self::markdown::Markdown;
+use self::report::{Metrics, Report};
 use clap::Parser;
 use log::LevelFilter;
 use serde::{Deserialize, Serialize};
@@ -13,8 +14,7 @@ use std::{
     thread,
     time::Duration,
 };
-use sysinfo::{CpuExt, PidExt, ProcessExt, System, SystemExt};
-use self::report::{Metrics, Report};
+use sysinfo::{Pid, Process, System};
 
 mod markdown;
 mod report;
@@ -72,9 +72,9 @@ fn main() {
     log::info!("Bench Bot started.");
 
     let ws_toml_path = args.workspace_dir.join("Cargo.toml");
-    let ws_toml = fs::read(&ws_toml_path).unwrap();
+    let ws_toml = fs::read_to_string(&ws_toml_path).unwrap();
 
-    let cargo: Cargo = toml::from_slice(&ws_toml).unwrap();
+    let cargo: Cargo = toml::from_str(&ws_toml).unwrap();
     let members = expand_members(cargo.workspace.members, &args.workspace_dir);
 
     let mut exclude = Vec::new();
@@ -163,7 +163,7 @@ fn main() {
 
             thread::sleep(Duration::from_secs(1));
 
-            let pid = PidExt::from_u32(server.id());
+            let pid = Pid::from_u32(server.id());
             let (tx, rx) = mpsc::channel::<()>();
 
             let mem_usage_thread = thread::spawn(move || {
@@ -171,8 +171,7 @@ fn main() {
                 let mut max_memory = 0;
                 while rx.try_recv().is_err() {
                     sys.refresh_process(pid);
-                    max_memory =
-                        max_memory.max(sys.process(pid).map(ProcessExt::memory).unwrap_or(0));
+                    max_memory = max_memory.max(sys.process(pid).map(Process::memory).unwrap_or(0));
 
                     thread::sleep(Duration::from_millis(100));
                 }
@@ -201,11 +200,7 @@ fn main() {
                 result_md.add_item(format!("```\n{}\n```", stdout.trim()));
 
                 if let Ok(metrics) = stdout.parse::<Metrics>() {
-                    reports.push(Report::new(
-                        framework_name,
-                        max_memory,
-                        metrics,
-                    ));
+                    reports.push(Report::new(framework_name, max_memory, metrics));
                 } else {
                     log::warn!("Could not parse benchmark result: {}", stdout);
                 }
